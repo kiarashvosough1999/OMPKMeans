@@ -41,6 +41,8 @@ int KMeansFactory<T>::execute(string inputFilename,
         case CriticalKMeansType:
             kmeans = new CriticalKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
+        case LAST:
+            break;
     };
 
     int usedIteration = kmeans->fit(vectorData);
@@ -85,6 +87,8 @@ int KMeansFactory<T>::execute(string inputFilename,
             "second\n";
 
     kmeans->printResults(usedIteration, true, st);
+
+    kmeans->saveCSV(s1, to_string(testNumber));
 }
 
 template<typename T>
