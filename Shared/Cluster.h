@@ -14,7 +14,10 @@ template <typename T> class Cluster {
 private:
 
     int clusterId;
+
+    // center position, can have any dimension
     vector<T> centroid;
+
     vector<Data<T>> datas;
 
 public:
