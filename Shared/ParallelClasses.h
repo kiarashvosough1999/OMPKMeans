@@ -9,7 +9,7 @@
 
 using namespace std;
 
-enum ParallelClasses { ForKMeansType = 0, D2KMeansType, D3PadKmeansType, SerialKMeansType, CriticalKMeansType };
+enum ParallelClasses { ForKMeansType = 0, D2KMeansType, D3PadKmeansType, SerialKMeansType, CriticalKMeansType, LAST };
 
 static string ParallelClassNames[] = {"ForKMeansType",
                                "D2KMeansType",
