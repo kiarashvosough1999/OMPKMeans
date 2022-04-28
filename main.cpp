@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
     int padding = 8;
     int iterations = 200;
 
-    for (int i = ForKMeansType; i != CriticalKMeansType ; i++) {
+    for (int i = ForKMeansType; i != LAST ; i++) {
         ParallelClasses parallelClass = static_cast<ParallelClasses>(i);
         for (int j = 1 ; j <= maxThreads; j++) {
             KMeansFactory<double>::execute(filename,
