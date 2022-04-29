@@ -141,4 +141,4 @@ Feel free to share your ideas or any other problems. Pull requests are welcomed.
 
 ## License
 
-ViewMaker was released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/OMPKMeans/blob/master/LICENSE) for more information.
+OMPKMeans was released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/OMPKMeans/blob/master/LICENSE) for more information.
