@@ -12,7 +12,7 @@ We have implemented KMeans with the omp library to parallelize and decrease clus
 - [Installation](#installation)
 - [Output](#output)
 - [Contribution](#contribution)
-- - [License](#license)
+- [License](#license)
 
 
 ## Requirements
