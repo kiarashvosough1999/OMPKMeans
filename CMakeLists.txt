@@ -12,15 +12,15 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-include_directories(D2KMeans)
+include_directories(SPMDMeans)
 include_directories(Shared)
 
 add_executable(1_3omp
         inputData5000.txt
         inputData50000.txt
         inputData500000.txt
-        D2KMeans/D2KMeans.cpp
-        D2KMeans/D2KMeans.h
+        SPMDMeans/SPMDKMeans.cpp
+        SPMDMeans/SPMDKMeans.h
         Shared/Cluster.cpp
         Shared/Cluster.h
         Shared/Data.cpp

@@ -1,11 +1,11 @@
-#include "D2KMeans.h"
+#include "SPMDKMeans.h"
 
 template<typename T>
-D2KMeans<T>::D2KMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed)
+SPMDKMeans<T>::SPMDKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed)
         : SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {}
 
 template<typename T>
-int D2KMeans<T>::fit(vector<Data<T>> &inputData) {
+int SPMDKMeans<T>::fit(vector<Data<T>> &inputData) {
 
     // store the count of data
     this->totalDataNumber = inputData.size();
@@ -121,4 +121,4 @@ int D2KMeans<T>::fit(vector<Data<T>> &inputData) {
     return iterationUntilNow;
 }
 
-template class D2KMeans<double>;
+template class SPMDKMeans<double>;

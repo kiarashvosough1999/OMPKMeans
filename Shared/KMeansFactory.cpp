@@ -30,7 +30,7 @@ int KMeansFactory<T>::execute(string inputFilename,
             kmeans = new ForKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
         case D2KMeansType:
-            kmeans = new D2KMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
+            kmeans = new SPMDKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
         case D3PadKmeansType:
             kmeans = new D3PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount);
@@ -42,7 +42,7 @@ int KMeansFactory<T>::execute(string inputFilename,
             kmeans = new CriticalKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
         case LAST:
-            break;
+            return -1;
     };
 
     int usedIteration = kmeans->fit(vectorData);
