@@ -88,7 +88,7 @@ sudo apt-get install build-essential gdb
 Use the following command to use GUI CMake for building project:
 
 ``` bash
-make-GUI
+cmake-GUI
 ```
 
 Alternatively, use the command line:
