@@ -29,10 +29,10 @@ int KMeansFactory<T>::execute(string inputFilename,
         case ForKMeansType:
             kmeans = new ForKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
-        case D2KMeansType:
+        case SMPDKMeansType:
             kmeans = new SPMDKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
-        case D3PadKmeansType:
+        case PadKmeansType:
             kmeans = new D3PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount);
             break;
         case SerialKMeansType:

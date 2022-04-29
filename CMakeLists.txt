@@ -29,8 +29,8 @@ add_executable(1_3omp
         Shared/KMeans.cpp
         ForKMeans/ForKMeans.cpp
         ForKMeans/ForKMeans.h
-        D3PadKMeans/D3PadKMeans.cpp
-        D3PadKMeans/D3PadKMeans.h
+        PadKMeans/PadKMeans.cpp
+        PadKMeans/PadKMeans.h
         Shared/SetKMeans.cpp
         Shared/SetKMeans.h
         Shared/ParallelClasses.h
