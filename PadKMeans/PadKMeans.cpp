@@ -2,13 +2,13 @@
 // Created by Kiarash Vosough on 4/14/22.
 //
 
-#include "D3PadKMeans.h"
+#include "PadKMeans.h"
 
-template <typename T> D3PadKMeans<T>::D3PadKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, int paddingCountToBeUsed) : SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {
+template <typename T> PadKMeans<T>::PadKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, int paddingCountToBeUsed) : SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {
     this->paddingCountToBeUsed = paddingCountToBeUsed;
 }
 
-template <typename T> int D3PadKMeans<T>::fit(vector<Data<T>> &inputData) {
+template <typename T> int PadKMeans<T>::fit(vector<Data<T>> &inputData) {
 
     // store the count of data
     this->totalDataNumber = inputData.size();
@@ -98,4 +98,4 @@ template <typename T> int D3PadKMeans<T>::fit(vector<Data<T>> &inputData) {
     return iterationUntilNow;
 }
 
-template class D3PadKMeans<double>;
+template class PadKMeans<double>;

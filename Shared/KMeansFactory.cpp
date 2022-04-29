@@ -29,10 +29,10 @@ int KMeansFactory<T>::execute(string inputFilename,
         case ForKMeansType:
             kmeans = new ForKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
-        case D2KMeansType:
-            kmeans = new D2KMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
+        case SMPDKMeansType:
+            kmeans = new SPMDKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
-        case D3PadKmeansType:
+        case PadKmeansType:
             kmeans = new D3PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount);
             break;
         case SerialKMeansType:
@@ -41,6 +41,8 @@ int KMeansFactory<T>::execute(string inputFilename,
         case CriticalKMeansType:
             kmeans = new CriticalKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
+        case LAST:
+            return -1;
     };
 
     int usedIteration = kmeans->fit(vectorData);
@@ -85,6 +87,8 @@ int KMeansFactory<T>::execute(string inputFilename,
             "second\n";
 
     kmeans->printResults(usedIteration, true, st);
+
+    kmeans->saveCSV(s1, to_string(testNumber));
 }
 
 template<typename T>

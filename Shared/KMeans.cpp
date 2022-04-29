@@ -193,5 +193,29 @@ bool KMeans<T>::checkForCompletion(bool doneFlag, int iterationUntilNow) {
     return false;
 }
 
+template<typename T>
+void KMeans<T>::saveCSV(string type, string test) {
+
+    ofstream myfile;
+    myfile.open("../" + type + "_" + test + ".csv");
+
+    char start = 'a';
+    for (int i = 0; i < this->dimensions ; ++i) {
+        myfile << to_string(start + i) + ",";
+    }
+    myfile << "c" << endl;
+
+    for (const Cluster<T> &cluster: this->clusters) {
+        for (Data<T> dataModel: cluster.getDatas()) {
+            for (T data: dataModel.getValues()) {
+                myfile << to_string(data) << ",";
+            }
+            myfile << to_string(cluster.getId()) << endl;
+        }
+    }
+
+    myfile.close();
+}
+
 template
 class KMeans<double>;

@@ -164,7 +164,7 @@ datas: { (16.000000, 12.000000, )  ****AND****  (8.000000, 29.000000, )  ****AND
 
 ======================================================================================================
 
-D2KMeansType
+SMPDKMeansType
 System Processes Count: 2
 System Thread Count: 1
 Thread used: 1
@@ -223,7 +223,7 @@ datas: { (6.000000, 52.000000, )  ****AND****  (3.000000, 52.000000, )  ****AND*
 
 ======================================================================================================
 
-D2KMeansType
+SMPDKMeansType
 System Processes Count: 2
 System Thread Count: 2
 Thread used: 2

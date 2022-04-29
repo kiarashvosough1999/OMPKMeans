@@ -56,6 +56,7 @@ public:
 
     virtual void printResults(int usedIteration, bool saveToFile, string beginOutput);
 
+    virtual void saveCSV(string type, string test);
 };
 
 #endif //INC_1_3OMP_KMEANS_H
