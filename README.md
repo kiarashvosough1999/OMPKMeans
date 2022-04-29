@@ -3,7 +3,7 @@
 ![Swift](https://img.shields.io/badge/C++-14-orange?style=flat-square)
 ![Platforms](https://img.shields.io/badge/Platforms-Linux-yellowgreen?style=flat-square)
 
-Implemented KMeans with opm library in order to parallelize and decrease clustering time consuming. 
+We have implemented KMeans with the omp library to parallelize and decrease clustering time consumption. 
 
 
 - [Requirements](#requirements)
@@ -29,7 +29,7 @@ Implemented KMeans with opm library in order to parallelize and decrease cluster
 
 ## Implementation
 
-I Used 4 Approaches to use omp constructs and 1 Serial and simple one. Each of them is a class that implements algorithm and spicific constructs: 
+We Used 4 Approaches to use omp constructs 1 Serial and a simple one. Each of them is a class that implements an algorithm and specific constructs: 
 
 - SerialKMeans
 - CriticalKMeans
@@ -39,27 +39,38 @@ I Used 4 Approaches to use omp constructs and 1 Serial and simple one. Each of t
 
 ## Serial KMeans
 
-This is the simple serial implementation of KMeans and uses no parallelisim.
+SerialKMeans is the simple serial implementation of KMeans and uses no parallelism.
 
 ## Critical KMeans
 
-On this approach I used `omp parallel` construction and to avoid data-race, 'omp critical' was used in order to modify clusters.
+In this approach, We used `omp parallel` construction, and to avoid data-race, 'omp critical' was used to modify clusters.
 
 ## SPMD KMeans
 
-In computing, SPMD (single program, multiple data) is a technique employed to achieve parallelism; it is a subcategory of MIMD. Tasks are split up and run simultaneously on multiple processors with different input in order to obtain results faster. SPMD is the most common style of parallel programming.
+In computing, SPMD (single program, multiple data) is a technique employed to achieve parallelism; it is a subcategory of MIMD. Tasks are split up and run simultaneously on multiple processors with different inputs to obtain results faster. SPMD is the most common style of parallel programming.
 
-So to acheive this approach I used a 2D Array to store Clusters for each thread and modify each of them on its own runnig thread, this way we splited up our tasks and avoided data-races, but at the end we should merge the results of each thread's cluster together.
+So to achieve this approach, We used a 2D Array to store Clusters for each thread and modify each of them on its running thread; this way, we split up our tasks and avoided data races, but in the end, we should merge the results of each thread's cluster.
+
+## ForKmeans
+
+We used `omp for` construct for several for loops inside the algorithm within this approach.
+
+## D3PadKmeans
+
+As you may know, there is much going on in the back scene of omp and hardware to provide us parallelism.
+One of them is **False-Sharing**, which puts lots of pressure on the parallelism process.
+
+To avoid **False-Sharing**, we use Padding in our parallel constructions.
 
 ## Installation
 
 To see if GCC is already installed on your system, open a Terminal window and enter the following command:
 
 ``` bash
-gcc -v
+GCC -v
 ```
 
-If GCC isn't installed, run the following command from the Terminal window to update the Ubuntu package lists. An out-of-date Linux distribution can interfere with getting the latest packages.
+If GCC is not installed, run the following command from the Terminal window to update the Ubuntu package lists. An out-of-date Linux distribution can interfere with getting the latest packages.
 
 ``` bash
 sudo apt-get update
@@ -74,15 +85,15 @@ sudo apt-get install build-essential gdb
 
 ### CMake
 
-Use Following command to use gui cmake for building project:
+Use the following command to use GUI CMake for building project:
 
 ``` bash
-cmake-gui
+make-GUI
 ```
 
-Or use command-line:
+Alternatively, use the command line:
 
-For example, from the command line we could navigate to the main root of project's directory of the CMake source code tree and create a build directory:
+For example, from the command line, we could navigate to the main root of the project's directory of the CMake source code tree and create a build directory:
 
 ``` bash
 mkdir Step1_build
@@ -95,10 +106,10 @@ cd Step1_build
 cmake ../Step1
 ```
 
-Then call that build system to actually compile/link the project:
+Then call that build system to compile/link the project:
 
 ``` bash
-cmake --build .
+CMake --build .
 ```
 
 Finally, try to use the newly built `1_3omp` with these commands:
@@ -109,7 +120,7 @@ Finally, try to use the newly built `1_3omp` with these commands:
 
 ## Output
 
-After running project and whenever it finished, there will be a `outputResult.txt` file that logged every approach and the final centroid of clusters and more info.
+After running the project and whenever it is finished, there will be a `outputResult.txt` file that logs every approach and the final centroid of clusters and more info.
 
 
 ## Contribution
