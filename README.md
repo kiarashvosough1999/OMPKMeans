@@ -12,6 +12,7 @@ We have implemented KMeans with the omp library to parallelize and decrease clus
 - [Installation](#installation)
 - [Output](#output)
 - [Contribution](#contribution)
+- [License](#license)
 
 
 ## Requirements
@@ -138,3 +139,6 @@ The result of execution on 4-core cpu with 3 threads in seconds.
 
 Feel free to share your ideas or any other problems. Pull requests are welcomed.
 
+## License
+
+OMPKMeans was released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/OMPKMeans/blob/master/LICENSE) for more information.
