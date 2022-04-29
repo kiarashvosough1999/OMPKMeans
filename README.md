@@ -88,7 +88,7 @@ sudo apt-get install build-essential gdb
 Use the following command to use GUI CMake for building project:
 
 ``` bash
-cmake-GUI
+make-GUI
 ```
 
 Alternatively, use the command line:
@@ -121,6 +121,17 @@ Finally, try to use the newly built `1_3omp` with these commands:
 ## Output
 
 After running the project and whenever it is finished, there will be a `outputResult.txt` file that logs every approach and the final centroid of clusters and more info.
+
+The result of execution on 4-core cpu with 3 threads in seconds.
+
+| Type\Thread  | 1 | 2 | 3 |
+|:----------|:----------|:----------|:----------|
+| SPMDKMeans | 2.012492 | 1.503747 | 2.867556 |
+| SerialKMeans | 0.701577 | **-** | **-** |
+| CriticalKMeans | 1.020082 | 0.508196 | 0.754293 |
+| PadKMeans | 1.750566 | 2.029637 | 1.578366 |
+| ForKMeans | 0.667854 | 0.883256 | 1.481328 |
+
 
 
 ## Contribution
