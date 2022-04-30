@@ -27,16 +27,17 @@ We have implemented KMeans with the omp library to parallelize and decrease clus
 - [x] Structured Implementation.
 - [x] Support Multi Dimension DataSets.
 - [x] Support Generic DataSets.
+- [x] Plotting Final Cluster. 
 
 ## Implementation
 
 We Used 4 Approaches to use omp constructs 1 Serial and a simple one. Each of them is a class that implements an algorithm and specific constructs: 
 
-- SerialKMeans
-- CriticalKMeans
-- SPMDKMeans
-- ForKmeans
-- D3PadKmeans
+- **SerialKMeans**
+- **CriticalKMeans**
+- **SPMDKMeans**
+- **ForKmeans**
+- **D3PadKmeans**
 
 ## Serial KMeans
 
