@@ -30,7 +30,7 @@
 #include <chrono>
 #include "../ForKMeans/ForKMeans.h"
 #include "SPMDKMeans.h"
-#include "../D3PadKMeans/D3PadKMeans.h"
+#include "../PadKMeans/PadKMeans.h"
 #include "../SerialKmeans/SerialKMeans.h"
 #include "../KMeansCritical/CriticalKMeans.h"
 

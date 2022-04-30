@@ -50,7 +50,7 @@ int KMeansFactory<T>::execute(string inputFilename,
             kmeans = new SPMDKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
             break;
         case PadKmeansType:
-            kmeans = new D3PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount);
+            kmeans = new PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount);
             break;
         case SerialKMeansType:
             kmeans = new SerialKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
