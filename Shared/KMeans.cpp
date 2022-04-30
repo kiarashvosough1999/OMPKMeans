@@ -217,10 +217,13 @@ void KMeans<T>::saveCSV(string type, string test) {
     myfile.open("../" + type + "_" + test + ".csv");
 
     char start = 'a';
-    for (int i = 0; i < this->dimensions ; ++i) {
-        myfile << to_string(start + i) + ",";
+    int i = 0;
+    for (i = 0; i < this->dimensions ; ++i) {
+        string temp = "";
+        temp.push_back(static_cast<char>(start + i));
+        myfile << temp << ",";
     }
-    myfile << "c" << endl;
+    myfile << static_cast<char>(start + i) << endl;
 
     for (const Cluster<T> &cluster: this->clusters) {
         for (Data<T> dataModel: cluster.getDatas()) {
