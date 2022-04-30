@@ -23,9 +23,9 @@ We have implemented KMeans with the omp library to parallelize and decrease clus
 
 ## Features
 
-- [x] Used 5 Approaches To Use OMP.
-- [x] Structured Implementation
-- [x] Support Multi Deminsion DataSets.
+- [x] Used 4 Approaches To Use OMP + 1 Serial Approach.
+- [x] Structured Implementation.
+- [x] Support Multi Dimension DataSets.
 - [x] Support Generic DataSets.
 
 ## Implementation
