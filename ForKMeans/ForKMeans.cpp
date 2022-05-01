@@ -40,17 +40,18 @@ template <typename T> int ForKMeans<T>::fit(vector<Data<T>> &inputData) {
 
     int iterationUntilNow = 1;
 
+
     while (true) {
         bool isAllDataInASuitableCluster = true;
-        omp_set_dynamic(1);
+//        omp_set_dynamic(1);
         omp_set_num_threads(this->threadCountToBeUsed);
-        #pragma omp parallel
+//        #pragma omp parallel
         {
             int currentClusterId;
             int nearestClusterId;
 
             // Add all datas to their nearest cluster
-            #pragma omp barrier // every thread will wait when reach here for other threads to be completed
+//            #pragma omp barrier // every thread will wait when reach here for other threads to be completed
             #pragma omp for nowait
             for (int i = 0; i < this->totalDataNumber; i++) {
                 currentClusterId = inputData[i].getClusterId();
@@ -58,13 +59,13 @@ template <typename T> int ForKMeans<T>::fit(vector<Data<T>> &inputData) {
 
                 if (currentClusterId != nearestClusterId) {
                     if (currentClusterId != 0) {
-                        #pragma omp parallel for
+//                        #pragma omp parallel for
                         for (int j = 0; j < this->demandClusterNumber; j++) {
                             if (this->clusters[j].getId() == currentClusterId)
                                 this->clusters[j].removeData(inputData[i].getID());
                         }
                     }
-                    #pragma omp parallel for
+//                    #pragma omp parallel for
                     for (int j = 0; j < this->demandClusterNumber; j++) {
                         if (this->clusters[j].getId() == nearestClusterId)
                             this->clusters[j].addData(inputData[i]);

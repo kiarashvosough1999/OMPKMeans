@@ -133,42 +133,42 @@ void KMeans<T>::printResults(int usedIteration, bool saveToFile, string beginOut
     const vector<T> *clusterCenters = this->getClusterCenters();
     const int dataDimension = this->clusters[0].getData(0).getDimensions();
 
-    for (int i = 0; i < usedIteration; i++) {
+//    for (int i = 0; i < usedIteration; i++) {
+//
+//        this->saveStringToFileAndPrintOnConsole(outputStream, "Iteration " + to_string(i) + " : ");
+//
+//        for (int j = 0; j < clusterCenters[i].size(); j++) {
+//            if (j % dataDimension == 0 && j != 0)
+//                this->saveStringToFileAndPrintOnConsole(outputStream, "  ****AND****  ");
+//
+//            this->saveStringToFileAndPrintOnConsole(outputStream, to_string(clusterCenters[i][j]) + " " +
+//                                                                  to_string(clusterCenters[i][++j]));
+//        }
+//        this->saveStringToFileAndPrintOnConsole(outputStream, "\n");
+//    }
 
-        this->saveStringToFileAndPrintOnConsole(outputStream, "Iteration " + to_string(i) + " : ");
-
-        for (int j = 0; j < clusterCenters[i].size(); j++) {
-            if (j % dataDimension == 0 && j != 0)
-                this->saveStringToFileAndPrintOnConsole(outputStream, "  ****AND****  ");
-
-            this->saveStringToFileAndPrintOnConsole(outputStream, to_string(clusterCenters[i][j]) + " " +
-                                                                  to_string(clusterCenters[i][++j]));
-        }
-        this->saveStringToFileAndPrintOnConsole(outputStream, "\n");
-    }
-
-    this->saveStringToFileAndPrintOnConsole(outputStream, "\n");
-
-    this->saveStringToFileAndPrintOnConsole(outputStream, "Final Centroids:\n\n");
-
-    for (const Cluster<T> &cluster: this->clusters) {
-
-        this->saveStringToFileAndPrintOnConsole(outputStream, "Cluster " + to_string(cluster.getId()) + " : ");
-
-        for (int i = 0; i < cluster.getData(0).getDimensions(); ++i)
-            this->saveStringToFileAndPrintOnConsole(outputStream, to_string(cluster.getCentroidByIndex(i)) + " ");
-
-        this->saveStringToFileAndPrintOnConsole(outputStream, "\ndatas: { ");
-
-        for (Data<T> dataModel: cluster.getDatas()) {
-            this->saveStringToFileAndPrintOnConsole(outputStream, "(");
-            for (T data: dataModel.getValues())
-                this->saveStringToFileAndPrintOnConsole(outputStream, to_string(data) + ", ");
-
-            this->saveStringToFileAndPrintOnConsole(outputStream, ")  ****AND****  ");
-        }
-        this->saveStringToFileAndPrintOnConsole(outputStream, "\n } \n");
-    }
+//    this->saveStringToFileAndPrintOnConsole(outputStream, "\n");
+//
+//    this->saveStringToFileAndPrintOnConsole(outputStream, "Final Centroids:\n\n");
+//
+//    for (const Cluster<T> &cluster: this->clusters) {
+//
+//        this->saveStringToFileAndPrintOnConsole(outputStream, "Cluster " + to_string(cluster.getId()) + " : ");
+//
+//        for (int i = 0; i < cluster.getData(0).getDimensions(); ++i)
+//            this->saveStringToFileAndPrintOnConsole(outputStream, to_string(cluster.getCentroidByIndex(i)) + " ");
+//
+//        this->saveStringToFileAndPrintOnConsole(outputStream, "\ndatas: { ");
+//
+//        for (Data<T> dataModel: cluster.getDatas()) {
+//            this->saveStringToFileAndPrintOnConsole(outputStream, "(");
+//            for (T data: dataModel.getValues())
+//                this->saveStringToFileAndPrintOnConsole(outputStream, to_string(data) + ", ");
+//
+//            this->saveStringToFileAndPrintOnConsole(outputStream, ")  ****AND****  ");
+//        }
+//        this->saveStringToFileAndPrintOnConsole(outputStream, "\n } \n");
+//    }
     this->saveStringToFileAndPrintOnConsole(outputStream, "\n");
 
     if(outputStream.is_open()) {

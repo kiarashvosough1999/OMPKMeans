@@ -27,6 +27,7 @@
 using namespace std;
 
 enum ParallelClasses { ForKMeansType = 0, SMPDKMeansType, PadKmeansType, SerialKMeansType, CriticalKMeansType, LAST };
+//enum ParallelClasses {SMPDKMeansType, PadKmeansType, SerialKMeansType, CriticalKMeansType, LAST };
 
 static string ParallelClassNames[] = {"ForKMeansType",
                                "SMPDKMeansType",
