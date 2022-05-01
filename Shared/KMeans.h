@@ -27,21 +27,28 @@
 #include "Data.h"
 #include <omp.h>
 #include <fstream>
+#include <mutex>
+
+using namespace std;
 
 template <typename T>
 class KMeans {
 
 protected:
 
-    int threadCountToBeUsed;
+    mutex* txtMutex;
 
-    int demandClusterNumber;
+    mutex* csvMutex;
 
-    int maxIterations;
+    int threadCountToBeUsed{};
 
-    int dimensions;
+    int demandClusterNumber{};
 
-    int totalDataNumber;
+    int maxIterations{};
+
+    int dimensions{};
+
+    int totalDataNumber{};
 
     vector<Cluster<T>> clusters;
 
@@ -63,7 +70,7 @@ protected:
 
 public:
 
-    KMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed);
+    KMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex);
 
     const vector<double>* getClusterCenters() const;
 

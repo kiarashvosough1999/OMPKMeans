@@ -21,7 +21,8 @@
 
 #include "ForKMeans.h"
 
-template <typename T> ForKMeans<T>::ForKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed) : KMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {}
+template <typename T> ForKMeans<T>::ForKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex)
+: KMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed, txtMutex, csvMutex) {}
 
 template <typename T> int ForKMeans<T>::fit(vector<Data<T>> &inputData) {
 

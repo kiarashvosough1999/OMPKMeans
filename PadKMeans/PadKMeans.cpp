@@ -21,7 +21,8 @@
 
 #include "PadKMeans.h"
 
-template <typename T> PadKMeans<T>::PadKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, int paddingCountToBeUsed) : SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {
+template <typename T> PadKMeans<T>::PadKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, int paddingCountToBeUsed, mutex* txtMutex, mutex* csvMutex)
+: SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed, txtMutex, csvMutex) {
     this->paddingCountToBeUsed = paddingCountToBeUsed;
 }
 

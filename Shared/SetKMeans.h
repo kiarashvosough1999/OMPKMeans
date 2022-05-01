@@ -28,7 +28,7 @@ template <typename T> class SetKMeans: public KMeans<T> {
 
 public:
 
-    SetKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed);
+    SetKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex);
 
 protected:
     vector<Data<T>> findIntersection(Cluster<T> cluster[]);

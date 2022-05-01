@@ -29,7 +29,7 @@ template <typename T> class ForKMeans: public KMeans<T> {
 
 public:
 
-    ForKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed);
+    ForKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex);
 
     int fit(vector<Data<T>> &inputData) override;
 

@@ -32,7 +32,7 @@ private:
 
 public:
 
-    PadKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, int paddingCountToBeUsed);
+    PadKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, int paddingCountToBeUsed, mutex* txtMutex, mutex* csvMutex);
 
     int fit(vector<Data<T>> &inputData) override;
 

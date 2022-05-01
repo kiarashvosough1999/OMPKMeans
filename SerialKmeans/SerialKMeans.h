@@ -29,7 +29,7 @@ template <typename T> class SerialKMeans: public KMeans<T> {
 
 public:
 
-    SerialKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed);
+    SerialKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex);
 
     int fit(vector<Data<T>>& inputData) override;
 };

@@ -21,8 +21,8 @@
 
 #include "SetKMeans.h"
 
-template <typename T> SetKMeans<T>::SetKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed) :
-KMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {}
+template <typename T> SetKMeans<T>::SetKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex) :
+        KMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed, txtMutex, csvMutex) {}
 
 template <typename T> vector<Data<T>> SetKMeans<T>::findIntersection(Cluster<T> cluster[]) {
     vector<Data<T>> intersectDatas;

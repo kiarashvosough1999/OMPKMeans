@@ -28,12 +28,13 @@
 #include "KMeans.h"
 #include <fstream>
 #include <chrono>
+#include <mutex>
 #include "../ForKMeans/ForKMeans.h"
 #include "SPMDKMeans.h"
 #include "../PadKMeans/PadKMeans.h"
 #include "../SerialKmeans/SerialKMeans.h"
 #include "../KMeansCritical/CriticalKMeans.h"
-
+#include <mutex>
 
 using namespace std;
 
@@ -45,9 +46,10 @@ public:
 
     static int
     execute(string inputFilename, ParallelClasses parallelClass, int demandClusterCount, int threadToBeUsedCount,
-            int iterationCount, int paddingCount, int testNumber);
+            int iterationCount, int paddingCount, int testNumber, mutex *txtLock, vector<Data<T>> inputData,
+            mutex *csvLock);
 
-    static vector<Data<T>> load_input(const string& filename);
+    static vector<Data<T>> load_input(const string &filename);
 
 
 };

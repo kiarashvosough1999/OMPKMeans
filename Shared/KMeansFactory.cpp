@@ -22,18 +22,19 @@
 #include "KMeansFactory.h"
 
 template<typename T>
-int KMeansFactory<T>::execute(string inputFilename,
-                              ParallelClasses parallelClass,
-                              int demandClusterCount,
+int KMeansFactory<T>::execute(string inputFilename, ParallelClasses parallelClass, int demandClusterCount,
                               int threadToBeUsedCount,
                               int iterationCount,
                               int paddingCount,
-                              int testNumber) {
+                              int testNumber,
+                              mutex *txtLock,
+                              vector<Data<T>> inputData,
+                              mutex *csvLock) {
 
-    vector<Data<T>> vectorData = KMeansFactory<T>::load_input(inputFilename);
+//    vector<Data<T>> vectorData = KMeansFactory<T>::load_input(inputFilename);
 
     // Return if number of clusters > number of datas
-    if (vectorData.size() < demandClusterCount) {
+    if (inputData.size() < demandClusterCount) {
         throw "Number of clusters greater than number of datas";
         return 1;
     }
@@ -44,25 +45,25 @@ int KMeansFactory<T>::execute(string inputFilename,
 
     switch (parallelClass) {
         case ForKMeansType:
-            kmeans = new ForKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
+            kmeans = new ForKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, txtLock, csvLock);
             break;
         case SMPDKMeansType:
-            kmeans = new SPMDKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
+            kmeans = new SPMDKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, txtLock, csvLock);
             break;
         case PadKmeansType:
-            kmeans = new PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount);
+            kmeans = new PadKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, paddingCount, txtLock, csvLock);
             break;
         case SerialKMeansType:
-            kmeans = new SerialKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
+            kmeans = new SerialKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, txtLock, csvLock);
             break;
         case CriticalKMeansType:
-            kmeans = new CriticalKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount);
+            kmeans = new CriticalKMeans<T>(demandClusterCount, iterationCount, threadToBeUsedCount, txtLock, csvLock);
             break;
         case LAST:
             return -1;
     };
 
-    int usedIteration = kmeans->fit(vectorData);
+    int usedIteration = kmeans->fit(inputData);
 
     auto endTime = chrono::high_resolution_clock::now();
 

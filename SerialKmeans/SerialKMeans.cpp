@@ -21,7 +21,8 @@
 
 #include "SerialKMeans.h"
 
-template <typename T> SerialKMeans<T>::SerialKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed) : KMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {}
+template <typename T> SerialKMeans<T>::SerialKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex)
+: KMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed, txtMutex, csvMutex) {}
 
 template<typename T>
 int SerialKMeans<T>::fit(vector<Data<T>> &inputData) {

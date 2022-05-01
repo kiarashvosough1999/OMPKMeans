@@ -29,7 +29,7 @@ template <typename T> class SPMDKMeans: public SetKMeans<T> {
 
 public:
 
-    SPMDKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed);
+    SPMDKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex);
 
     int fit(vector<Data<T>>& inputData) override;
 

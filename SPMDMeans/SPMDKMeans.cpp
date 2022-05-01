@@ -22,8 +22,8 @@
 #include "SPMDKMeans.h"
 
 template<typename T>
-SPMDKMeans<T>::SPMDKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed)
-        : SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed) {}
+SPMDKMeans<T>::SPMDKMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex)
+        : SetKMeans<T>(demandClusterNumber, iterations, threadCountToBeUsed, txtMutex, csvMutex) {}
 
 template<typename T>
 int SPMDKMeans<T>::fit(vector<Data<T>> &inputData) {
@@ -38,7 +38,7 @@ int SPMDKMeans<T>::fit(vector<Data<T>> &inputData) {
 
     this->initializeClusters(inputData);
 
-    cout << "Fitting D2-KMeans Clustering.." << endl;
+    cout << "Fitting SPMD-KMeans Clustering.." << endl;
 
     int iterationUntilNow = 1;
     // [Rows count == Thread Num][Column count == demandClusterNumber]

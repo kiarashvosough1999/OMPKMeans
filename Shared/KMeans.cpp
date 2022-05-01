@@ -23,10 +23,12 @@
 #include <algorithm>
 
 template<typename T>
-KMeans<T>::KMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed) {
+KMeans<T>::KMeans(int demandClusterNumber, int iterations, int threadCountToBeUsed, mutex* txtMutex, mutex* csvMutex) {
     this->demandClusterNumber = demandClusterNumber;
     this->maxIterations = iterations;
     this->threadCountToBeUsed = threadCountToBeUsed;
+    this->txtMutex = txtMutex;
+    this->csvMutex = csvMutex;
 }
 
 template<typename T>
@@ -113,6 +115,8 @@ void KMeans<T>::saveStringToFileAndPrintOnConsole(ofstream &outputStream, string
 template<typename T>
 void KMeans<T>::printResults(int usedIteration, bool saveToFile, string beginOutput) {
 
+    this->txtMutex->lock();
+
     ofstream outputStream;
     if (saveToFile) {
         outputStream.open("../outputResults.txt", ios::app);
@@ -170,6 +174,8 @@ void KMeans<T>::printResults(int usedIteration, bool saveToFile, string beginOut
     if(outputStream.is_open()) {
         outputStream.close();
     }
+
+    this->txtMutex->unlock();
 }
 
 template<typename T>
@@ -213,6 +219,7 @@ bool KMeans<T>::checkForCompletion(bool doneFlag, int iterationUntilNow) {
 template<typename T>
 void KMeans<T>::saveCSV(string type, string test) {
 
+    this->csvMutex->lock();
     ofstream myfile;
     myfile.open("../" + type + "_" + test + ".csv");
 
@@ -235,6 +242,7 @@ void KMeans<T>::saveCSV(string type, string test) {
     }
 
     myfile.close();
+    this->csvMutex->unlock();
 }
 
 template
