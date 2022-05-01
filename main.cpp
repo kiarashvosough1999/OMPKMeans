@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 
     for (int i = ForKMeansType; i != LAST ; i++) {
         ParallelClasses parallelClass = static_cast<ParallelClasses>(i);
-        for (int j = 2 ; j <= maxThreads; j++) {
+        for (int j = 1 ; j <= maxThreads; j++) {
             KMeansFactory<double>::execute(filename,
                                            parallelClass,
                                            K,
