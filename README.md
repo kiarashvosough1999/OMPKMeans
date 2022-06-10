@@ -37,7 +37,7 @@ We Used 4 Approaches to use omp constructs 1 Serial and a simple one. Each of th
 - **CriticalKMeans**
 - **SPMDKMeans**
 - **ForKmeans**
-- **D3PadKmeans**
+- **PadKmeans**
 
 ## Serial KMeans
 
@@ -57,7 +57,7 @@ So to achieve this approach, We used a 2D Array to store Clusters for each threa
 
 We used `omp for` construct for several for loops inside the algorithm within this approach.
 
-## D3PadKmeans
+## PadKmeans
 
 As you may know, there is much going on in the back scene of omp and hardware to provide us parallelism.
 One of them is **False-Sharing**, which puts lots of pressure on the parallelism process.
