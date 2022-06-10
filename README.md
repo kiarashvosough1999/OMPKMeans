@@ -124,16 +124,15 @@ Finally, try to use the newly built `1_3omp` with these commands:
 
 After running the project and whenever it is finished, there will be a `outputResult.txt` file that logs every approach and the final centroid of clusters and more info.
 
-The result of execution on 4-core cpu with 3 threads in seconds.
+The result of execution on 4-core cpu with 12 threads in seconds.
 
-| Type\Thread  | 1 | 2 | 3 |
-|:----------|:----------|:----------|:----------|
-| SPMDKMeans | 2.012492 | 1.503747 | 2.867556 |
-| SerialKMeans | 0.701577 | **-** | **-** |
-| CriticalKMeans | 1.020082 | 0.508196 | 0.754293 |
-| PadKMeans | 1.750566 | 2.029637 | 1.578366 |
-| ForKMeans | 0.667854 | 0.883256 | 1.481328 |
-
+| Type\Thread  | 1 | 2 | 3 |	4	| 5 |	6 |	7 |	8 |	9 |	10 | 11 |	12 |
+|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|:----------|
+| SPMD	    | 1.311	| 1.54 | 1.92 | 2.71 | 2.61	| 2.77 | 4.07	| 7.18 | 7.02| **3.38** | 6.46 | 5.88 |
+| Serial	  | 1.07 | - | -	| -	| - | -	| -	| -	| -	| -	| -	| - |
+| Critical	| 0.75 | 0.63 | 0.33	| 0.29 | 0.32	| 0.46 | 0.3 | 0.29	| 0.3	| 0.43 | 0.4 | **0.21** |
+| Pad	      | **1.21** | 1.56 | 1.97	| 3.21 | 2.83	| 4.37 | 4.61 | 3.81 | 4.39	| 3.90 | 4.89 | 4.50 |
+| For	      | 0.57 | 0.70 | 1.29	| 0.75 | 0.93	| 0.85 | **0.55**	| 0.70 | 1.29	| 0.75 | 0.93	| 0.85 |
 
 
 ## Contribution
